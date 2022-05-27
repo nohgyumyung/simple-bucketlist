@@ -53,6 +53,7 @@ struct EditBucketList: View {
                     }
                     Text(bucketList.content)
                         .font(.custom("NotoSansKR-Light", size: 16))
+                        .padding(.leading, 7)
                         .background(GeometryReader {
                             Color.clear.preference(
                                 key: ViewHeightKey.self,

@@ -30,20 +30,23 @@ struct BucketListRow: View {
                 .buttonStyle(.plain)
             Text(bucketList.content)
                 .font(.custom("NotoSansKR-Light", size: 16))
+                .lineLimit(nil)
+                .multilineTextAlignment(.leading)
                 .foregroundColor(colorData.secondary.rgbColor)
-                .background(NavigationLink(destination: EditBucketList(bucketList: bucketList, editState: .edit)) {}.opacity(0))
             Spacer()
         }
+        .background(NavigationLink(destination: EditBucketList(bucketList: bucketList, editState: .edit)) {}.opacity(0.5))
         .padding()
         .background(RoundedRectangle(cornerRadius: 5)
             .foregroundColor(colorData.primary.rgbColor))
+    
     }
 }
 
 struct BucketListRow_Previews: PreviewProvider {
     static let bucketList0 = BucketList(
         id: UUID().uuidString,
-        content: "제주도 여행",
+        content: "유튜브에 최소 한 편 이상의 영상 업로드하기",
         isDone: false
     )
     

@@ -16,7 +16,18 @@ final class ModelData: ObservableObject {
     @Published var isNewBucketListAdded: Bool = false
     
     init() {
+        firstLaunchSetUp()
         fetchBucketLists()
+    }
+    
+    func firstLaunchSetUp() {
+        guard let _ = UserDefaults.standard.object(forKey: "isFirstLaunch") as? Bool else {
+            UserDefaults.standard.set(false, forKey: "isFirstLaunch")
+
+            let bucketList = BucketList(id: UUID().uuidString, content: "Add your first bucketlist", isDone: false)
+            self.bucketLists.append(bucketList)
+            return
+        }
     }
     
     func fetchBucketLists() {
